@@ -1,6 +1,5 @@
 /*
  * Github: https://github.com/zenithtech/wordpress-gravity-forms-buttons
- *
  */
 
 window.gravityFormProxies = function(dropdowns, radios) {
