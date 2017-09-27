@@ -120,7 +120,7 @@ ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_s
     vertical-align: middle;
     text-align: center;
     font-size: 14px;
-    padding: 0 0 10px 15px;
+    padding: 0 10px 10px 0;
     border: 0;
     margin: 0;
     border-left: 0;
@@ -166,8 +166,8 @@ ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_s
 	cursor: default;
 	color: #fff;
 }
-ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item:first-child {
-	padding: 0 0 10px 0;
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item:last-child {
+    padding: 0 0 10px 0;
 }
 
 /* END start .proxy_select */
