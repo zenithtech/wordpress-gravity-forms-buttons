@@ -1,0 +1,175 @@
+
+/* START Gravity Form proxies */
+ul.gform_fields > li.gfield .ginput_container._proxy_hidden {
+	display: none !important;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container {
+	border-radius: 5px;
+	background-color: #fff;
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	position: relative;
+	border-collapse: separate;
+	border-spacing: 0;
+	overflow: hidden;
+	border: 1px solid #b9c1bf;
+}
+
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio {
+	display: table-row;
+	position: relative;
+	float: none;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	font-size: 14px;
+	padding: 10px 5px 11px 15px;
+	border: 0;
+	margin: 0;
+	cursor: pointer;
+	border-left: 1px solid #b9c1bf;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table {
+	display: table;
+	table-layout: auto;
+	position: relative;
+	float: none;
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+	padding: 0;
+}
+ul.gform_fields li[id$="_proxy"] .ginput_container .gfield_radio .item .item_table .item_cell {
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item:first-child {
+	border-left: 0;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] {
+	background-color: #b9c1bf;
+	cursor: default;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell .radio {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	position: relative;
+	background-color: transparent;
+	border-radius: 50%;
+	border: 2px solid #b9c1bf;
+	box-sizing: border-box !important;
+	float: none;
+	vertical-align: middle;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell .radio {
+	border: 2px solid #FFF;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell .radio:before {
+	display: none;
+	content: '';
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	width: 8px;
+	height: 8px;
+	background-color: #fff;
+	border-radius: 50%;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell .radio:before {
+	display: block;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell span.text {
+	font-size: 14px;
+	line-height: 1.4;
+	margin: 0;
+	padding: 0 0 0 5px;
+	display: inline-block;
+	float: none;
+	color: #000;
+	vertical-align: middle;
+	letter-spacing: -0.6px;
+}
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell span.text {
+	color: #fff;
+}
+
+/* START .proxy_select */
+
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container {
+    border: 0;
+    table-layout: auto;
+    width: auto;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select {
+    display: table-row;
+    position: relative;
+    float: none;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 0 10px 15px;
+    border: 0;
+    margin: 0;
+    border-left: 0;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item .item_table {
+    display: table;
+    table-layout: fixed;
+    position: relative;
+    float: none;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item .item_table .item_cell {
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+    width: 100%;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item .item_table .item_cell .text {
+    height: 40px;
+    width: auto;
+    min-width: 40px;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    border: 1px solid #b9c1bf;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 40px;
+    border-radius: 20px 20px 20px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item.selected .item_table .item_cell .text {
+	background-color: #b9c1bf;
+	cursor: default;
+	color: #fff;
+}
+ul.gform_fields li[id$="_proxy"].gfield.proxy_select .ginput_container .gfield_select .item:first-child {
+	padding: 0 0 10px 0;
+}
+
+/* END start .proxy_select */
+
+/* END Gravity Form proxies */
