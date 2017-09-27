@@ -10,21 +10,31 @@ window.gravityFormProxies(
 );
 ```
 
-f you want to turn all dropdowns in to horizontal buttons, enter true, such as:
+
+
+If you want to turn all dropdowns in to horizontal buttons, enter true, such as:
 
 `window.gravityFormProxies(true);`
+
+
 
 Or target a single dropdown by adding a 'Custom CSS Class' to a 'Drop Down' type Gravity form field to turn it into horizontal buttons:
 
 `window.gravityFormProxies('.gfield.dropdown_buttons');`
 
+
+
 You may also choose to only turn all radio buttons to custom horizontal buttons by adding a second value as true:
 
 `window.gravityFormProxies(false, true);`
 
+
+
 Or target a single radio group by adding a 'Custom CSS Class' to a 'Radio' type Gravity form field to turn it into horizontal buttons:
 
 `window.gravityFormProxies(false, 'myVerticalRadios');`
+
+
 
 Or turn all dropdowns and radio buttons into cutom horizontal buttons by passing both values as true:
 
