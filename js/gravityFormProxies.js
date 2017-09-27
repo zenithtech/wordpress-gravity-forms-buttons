@@ -1,5 +1,5 @@
 /*
- * Github: https://github.com/zenithtech/wordpress-gravityforms-buttons
+ * Github: https://github.com/zenithtech/wordpress-gravity-forms-buttons
  *
  * This is a jQuery-based script and CSS that enables customizing the interface of WordPress Gravity Form radio options and dropdown select fields
  * by creating proxy interfaces that convey the user choices to the original fields
