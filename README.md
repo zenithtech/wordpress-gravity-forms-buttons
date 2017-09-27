@@ -32,7 +32,7 @@ You may also choose to only turn all radio buttons to custom horizontal buttons 
 
 Or target a single radio group by adding a 'Custom CSS Class' to a 'Radio' type Gravity form field to turn it into horizontal buttons:
 
-`window.gravityFormProxies(false, 'myVerticalRadios');`
+`window.gravityFormProxies(false, '.myVerticalRadios');`
 
 
 
