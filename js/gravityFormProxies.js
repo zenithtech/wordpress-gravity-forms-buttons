@@ -186,6 +186,6 @@ window.gravityFormProxies = function(dropdowns, radios) {
 			}
 		});
 
-	this.gfObj.init();
+	t.gfObj.init();
 
 }
