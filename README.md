@@ -27,16 +27,16 @@ Or target a single dropdown by adding a 'Custom CSS Class' to a 'Drop Down' type
 
 You may also choose to only turn all radio buttons to custom horizontal buttons by adding a second value as true:
 
-`window.gravityFormProxies(false, true);`
+`window.gravityFormProxies(false, true, false);`
 
 
 
 Or target a single radio group by adding a 'Custom CSS Class' to a 'Radio' type Gravity form field to turn it into horizontal buttons:
 
-`window.gravityFormProxies(false, '.myVerticalRadios');`
+`window.gravityFormProxies(false, '.myVerticalRadios', false);`
 
 
 
-Or turn all dropdowns and radio buttons into cutom horizontal buttons by passing both values as true:
+Or turn all dropdowns and radio buttons into cutom horizontal buttons by passing all values as true:
 
-`window.gravityFormProxies(true, true);`
+`window.gravityFormProxies(true, true, true);`
