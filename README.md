@@ -6,7 +6,8 @@ Usage:
 ```
 window.gravityFormProxies(
     [string or boolean: either the classname of a target 'Drop Down' type Gravity form field, or a boolean to target all the fields 'Drop Down' type Gravity form fields],
-    [string or boolean: either the classname of a target 'Radio' type Gravity form field, or a boolean to target all 'Radio' type Gravity form fields]
+    [string or boolean: either the classname of a target 'Radio' type Gravity form field, or a boolean to target all 'Radio' type Gravity form fields],
+    [string or boolean: either the classname of a target 'Checkbox' type Gravity form field, or a boolean to target all 'Checkbox' type Gravity form fields]
 );
 ```
 
