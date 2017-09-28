@@ -17,13 +17,13 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container {
     border: 1px solid #b9c1bf;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item {
     display: table-row;
     position: relative;
     float: none;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item {
     display: table-cell;
     vertical-align: middle;
     text-align: left;
@@ -35,7 +35,7 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item {
     border-left: 1px solid #b9c1bf;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item .item_table {
     display: table;
     table-layout: auto;
     position: relative;
@@ -47,7 +47,7 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .i
     padding: 0;
 }
 
-ul.gform_fields li[id$="_proxy"] .ginput_container .gfield_radio .item .item_table .item_cell {
+ul.gform_fields li[id$="_proxy"] .ginput_container .gfield_item .item .item_table .item_cell {
     display: table-cell;
     vertical-align: middle;
     float: none;
@@ -57,16 +57,16 @@ ul.gform_fields li[id$="_proxy"] .ginput_container .gfield_radio .item .item_tab
     line-height: 1;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item:first-child {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item:first-child {
     border-left: 0;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item[checked="checked"] {
     background-color: #b9c1bf;
     cursor: default;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell .radio {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item .item_table .item_cell .item {
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -77,13 +77,14 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .i
     box-sizing: border-box !important;
     float: none;
     vertical-align: middle;
+    padding: 0;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell .radio {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item[checked="checked"] .item_table .item_cell .item {
     border: 2px solid #FFF;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell .radio:before {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item .item_table .item_cell .item:before {
     display: none;
     content: '';
     position: absolute;
@@ -95,11 +96,11 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .i
     border-radius: 50%;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell .radio:before {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item[checked="checked"] .item_table .item_cell .item:before {
     display: block;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .item_table .item_cell span.text {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item .item_table .item_cell span.text {
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
@@ -111,7 +112,7 @@ ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item .i
     letter-spacing: -0.6px;
 }
 
-ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_radio .item[checked="checked"] .item_table .item_cell span.text {
+ul.gform_fields li[id$="_proxy"].gfield .ginput_container .gfield_item .item[checked="checked"] .item_table .item_cell span.text {
     color: #fff;
 }
 
