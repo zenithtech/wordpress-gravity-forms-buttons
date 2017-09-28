@@ -2,7 +2,7 @@
  * Github: https://github.com/zenithtech/wordpress-gravity-forms-buttons
  */
 
-window.gravityFormProxies = function(dropdowns, radios) {
+window.gravityFormProxies = function(dropdowns, radios, checkboxes) {
 
     var t = this;
 
@@ -16,6 +16,9 @@ window.gravityFormProxies = function(dropdowns, radios) {
                 }
                 if(radios) {
                     t.replaceRadios(radios);
+                }
+                if(checkboxes) {
+                    t.replaceCheckboxes(checkboxes);
                 }
 
             },
@@ -111,7 +114,7 @@ window.gravityFormProxies = function(dropdowns, radios) {
                             <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
                                 <div class="item_table">\
                                     <div class="item_cell">\
-                                        <div class="radio"></div>\
+                                        <div class="item"></div>\
                                     </div>\
                                     <div class="item_cell">\
                                         <span class="text">' + choiceLabel + '</span>\
@@ -121,9 +124,9 @@ window.gravityFormProxies = function(dropdowns, radios) {
                         });
                         
                         html = '\
-                            <li id="' + id + '_proxy" class="gfield proxy_radio" data-id="' + id + '">\
+                            <li id="' + id + '_proxy" class="gfield proxy_item" data-id="' + id + '">\
                                 <div class="ginput_container">\
-                                    <div class="gfield_radio">' + 
+                                    <div class="gfield_item">' + 
                                         html_choices +
                                     '</div>\
                                 </div>\
@@ -134,7 +137,7 @@ window.gravityFormProxies = function(dropdowns, radios) {
 
                     });
 
-                    jQuery('.gfield.proxy_radio .item').on('click', function(){
+                    jQuery('.gfield.proxy_item .item').on('click', function(){
                         if( typeof jQuery(this).attr('checked') == 'undefined' || 
                             jQuery(this).attr('checked') != 'checked'
                             ){
@@ -144,6 +147,78 @@ window.gravityFormProxies = function(dropdowns, radios) {
                                 id = jQuery(this).parent().parent().parent().data('id');
 
                             jQuery('#'+id+' ul.gfield_radio li').each(function(){
+                                jQuery(this).children('input').removeAttr('checked');
+                            });
+                            jQuery('#'+inputid).attr('checked', 'checked');
+                            jQuery(this).siblings().removeAttr('checked');
+                            jQuery(this).attr('checked', 'checked');
+
+                            if(onclick){
+                                eval(onclick);
+                            }
+
+                        }
+                    });
+                }
+
+            },
+            replaceCheckboxes: function(el){
+                if(el){
+                    if(typeof el == 'string') {
+                        el = el + ' .ginput_container_checkbox';
+                    }
+                    if(typeof el == 'boolean') {
+                        el = 'li.gfield .ginput_container_checkbox';
+                    }
+                    jQuery(el).each(function(){
+                        var html = '',
+                            html_choices = '',
+                            id = jQuery(this).parent().attr('id');
+
+                        jQuery(this).children('ul.gfield_checkbox').children('li').each(function(){
+                            var dataVal = jQuery(this).children('input').val(),
+                                inputid = jQuery(this).children('input').attr('id'),
+                                choiceLabel = jQuery(this).children('label')[0].innerHTML,
+                                onclick = jQuery(this).children('input').attr('onclick') ? jQuery(this).children('input').attr('onclick') : '',
+                                checked = jQuery(this).children('input').attr('checked') && jQuery(this).children('input').attr('checked') == 'checked' ? 'checked="checked"' : '';
+
+                            html_choices += '\
+                            <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
+                                <div class="item_table">\
+                                    <div class="item_cell">\
+                                        <div class="item"></div>\
+                                    </div>\
+                                    <div class="item_cell">\
+                                        <span class="text">' + choiceLabel + '</span>\
+                                    </div>\
+                                </div>\
+                            </div>';
+                        });
+                        
+                        html = '\
+                            <li id="' + id + '_proxy" class="gfield proxy_checkbox" data-id="' + id + '">\
+                                <div class="ginput_container">\
+                                    <div class="gfield_item">' + 
+                                        html_choices +
+                                    '</div>\
+                                </div>\
+                            </li>';
+
+                        jQuery(this).addClass('_proxy_hidden');
+                        jQuery(this).parent().append(html);
+
+                    });
+
+                    jQuery('.gfield.proxy_checkbox .item').on('click', function(){
+                        if( typeof jQuery(this).attr('checked') == 'undefined' || 
+                            jQuery(this).attr('checked') != 'checked'
+                            ){
+
+                            var inputid = jQuery(this).data('inputid'),
+                                onclick = jQuery(this).data('onclick') ? "window." + jQuery(this).data('onclick') : false,
+                                id = jQuery(this).parent().parent().parent().data('id');
+
+                            jQuery('#'+id+' ul.gfield_checkbox li').each(function(){
                                 jQuery(this).children('input').removeAttr('checked');
                             });
                             jQuery('#'+inputid).attr('checked', 'checked');
