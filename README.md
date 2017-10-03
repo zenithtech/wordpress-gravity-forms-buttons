@@ -16,22 +16,35 @@ gravityFormProxies(
 ## Examples:
 
 `window.gravityFormProxies(true);`
+
 Turn all dropdowns in to horizontal buttons.
 
+
 `window.gravityFormProxies(false, true, false);`
+
 Turns all radio buttons to horizontal buttons.
 
+
 `window.gravityFormProxies(false, '.myVerticalRadios', false);`
+
 Turns a single radio group to horizontal buttons.
 
+
 `window.gravityFormProxies(true, true, true);`
+
 Turns all dropdowns and radio buttons into horizontal buttons.
 
+
 `gravityFormProxies(false, [true, 2], false);`
+
 Turns all radio options that have 2 options into horizontal buttons.
 
+
 `gravityFormProxies(false, ['.myCustomRadios', 2], false);`
+
 Turns all radio options that have 2 options and match classname `.myCustomRadios` into horizontal buttons.
 
+
 `gravityFormProxies(false, true, '.myCheckBoxes');`
+
 Turns all radio options into horizontal buttons, and turns all checkboxes that match classname `.myCheckBoxes` into horizontal buttons.
