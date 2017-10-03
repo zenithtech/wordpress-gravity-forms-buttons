@@ -15,9 +15,15 @@ gravityFormProxies(
 
 ## Examples:
 
+
 `window.gravityFormProxies(true, true, true);`
 
-Turn all dropdowns in to horizontal buttons.
+Turns all dropdowns, radio, and checkboxes into horizontal buttons.
+
+
+`window.gravityFormProxies(true);`
+
+Turn only dropdowns in to horizontal buttons.
 
 
 `window.gravityFormProxies(false, true, false);`
@@ -28,11 +34,6 @@ Turns all radio buttons to horizontal buttons.
 `window.gravityFormProxies(false, '.myVerticalRadios', false);`
 
 Turns a single radio group to horizontal buttons.
-
-
-`window.gravityFormProxies(true, true, true);`
-
-Turns all dropdowns and radio buttons into horizontal buttons.
 
 
 `gravityFormProxies(false, [true, 2], false);`
