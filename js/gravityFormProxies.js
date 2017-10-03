@@ -25,46 +25,75 @@ window.gravityFormProxies = function(dropdowns, radios, checkboxes) {
             replaceDropdowns: function(el){
                 if(el){
                     if(typeof el == 'string') {
-                        el = el + ' .ginput_container_select';
+                        element = el + ' .ginput_container_select';
                     }
                     if(typeof el == 'boolean') {
-                        el = 'li.gfield .ginput_container_select';
+                        element = 'li.gfield .ginput_container_select';
                     }
-                    jQuery(el).each(function(){
-                        var html = '',
-                            html_choices = '',
+                    if(typeof el == 'object') {
+                        if(typeof el[0] == 'string' && typeof el[1] == 'number') {
+                            element = el[0] + ' .ginput_container_select';
+                        }
+                        if(typeof el[0] == 'boolean') {
+                            element = 'li.gfield .ginput_container_select';
+                        }
+                    }
+
+
+                    jQuery(element).each(function(){
+                        var t = this,
                             id = jQuery(this).parent().attr('id'),
-                            select_id = jQuery(this).children('select').attr('id'),
-                            val = jQuery(this).children('select').val(),
-                            onchange = jQuery(this).attr('onchange') ? jQuery(this).attr('onchange') : '',
-                            select_value = jQuery('#'+select_id).val();
+                            target = jQuery(this).children('select').children('option'),
+                            processEls = function(t, id, target){
+                                var html = '',
+                                    html_choices = '',
+                                    select_id = jQuery(t).children('select').attr('id'),
+                                    val = jQuery(t).children('select').val(),
+                                    onchange = jQuery(t).attr('onchange') ? jQuery(t).attr('onchange') : '',
+                                    select_value = jQuery('#'+select_id).val();
 
-                        jQuery(this).children('select').children('option').each(function(index){
-                            var dataVal = jQuery(this).val(),
-                                selected = select_value == dataVal ? ' selected' : '',
-                                choiceLabel = jQuery(this)[0].innerHTML;
+                                target.each(function(index){
+                                    var dataVal = jQuery(this).val(),
+                                        selected = select_value == dataVal ? ' selected' : '',
+                                        choiceLabel = jQuery(this)[0].innerHTML;
 
-                            html_choices += '\
-                            <div class="item'+ selected + '" data-index="' + index + '" data-val="' + dataVal + '">\
-                                <div class="item_table">\
-                                    <div class="item_cell">\
-                                        <span class="text">' + choiceLabel + '</span>\
-                                    </div>\
-                                </div>\
-                            </div>';
-                        });
-                        
-                        html = '\
-                            <li id="' + id + '_proxy" class="gfield proxy_select" data-id="' + id + '" data-onchange="' + onchange + '">\
-                                <div class="ginput_container">\
-                                    <div class="gfield_select" data-select_id="' + select_id + '">' + 
-                                        html_choices +
-                                    '</div>\
-                                </div>\
-                            </li>';
+                                    html_choices += '\
+                                    <div class="item'+ selected + '" data-index="' + index + '" data-val="' + dataVal + '">\
+                                        <div class="item_table">\
+                                            <div class="item_cell">\
+                                                <span class="text">' + choiceLabel + '</span>\
+                                            </div>\
+                                        </div>\
+                                    </div>';
+                                });
+                                
+                                html = '\
+                                    <li id="' + id + '_proxy" class="gfield proxy_select" data-id="' + id + '" data-onchange="' + onchange + '">\
+                                        <div class="ginput_container">\
+                                            <div class="gfield_select" data-select_id="' + select_id + '">' + 
+                                                html_choices +
+                                            '</div>\
+                                        </div>\
+                                    </li>';
 
-                        jQuery(this).addClass('_proxy_hidden');
-                        jQuery(this).parent().append(html);
+                                jQuery(t).addClass('_proxy_hidden');
+                                jQuery(t).parent().append(html);
+                            }
+
+                        if(typeof el == 'string') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'boolean') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'object') {
+                            if(typeof el[0] == 'string' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                            if(typeof el[0] == 'boolean' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                        }
 
                     });
 
@@ -93,47 +122,75 @@ window.gravityFormProxies = function(dropdowns, radios, checkboxes) {
             replaceRadios: function(el){
                 if(el){
                     if(typeof el == 'string') {
-                        el = el + ' .ginput_container_radio';
+                        element = el + ' .ginput_container_radio';
                     }
                     if(typeof el == 'boolean') {
-                        el = 'li.gfield .ginput_container_radio';
+                        element = 'li.gfield .ginput_container_radio';
                     }
-                    jQuery(el).each(function(){
-                        var html = '',
-                            html_choices = '',
-                            id = jQuery(this).parent().attr('id');
+                    if(typeof el == 'object') {
+                        if(typeof el[0] == 'string' && typeof el[1] == 'number') {
+                            element = el[0] + ' .ginput_container_radio';
+                        }
+                        if(typeof el[0] == 'boolean') {
+                            element = 'li.gfield .ginput_container_radio';
+                        }
+                    }
 
-                        jQuery(this).children('ul.gfield_radio').children('li').each(function(){
-                            var dataVal = jQuery(this).children('input').val(),
-                                inputid = jQuery(this).children('input').attr('id'),
-                                choiceLabel = jQuery(this).children('label')[0].innerHTML,
-                                onclick = jQuery(this).children('input').attr('onclick') ? jQuery(this).children('input').attr('onclick') : '',
-                                checked = jQuery(this).children('input').attr('checked') && jQuery(this).children('input').attr('checked') == 'checked' ? 'checked="checked"' : '';
+                    jQuery(element).each(function(){
+                        var t = this,
+                            id = jQuery(this).parent().attr('id'),
+                            target = jQuery(this).children('ul.gfield_radio').children('li'),
+                            processEls = function(t, id, target){
+                                var html = '',
+                                    html_choices = '';
 
-                            html_choices += '\
-                            <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
-                                <div class="item_table">\
-                                    <div class="item_cell">\
-                                        <div class="item"></div>\
-                                    </div>\
-                                    <div class="item_cell">\
-                                        <span class="text">' + choiceLabel + '</span>\
-                                    </div>\
-                                </div>\
-                            </div>';
-                        });
-                        
-                        html = '\
-                            <li id="' + id + '_proxy" class="gfield proxy_item" data-id="' + id + '">\
-                                <div class="ginput_container">\
-                                    <div class="gfield_item">' + 
-                                        html_choices +
-                                    '</div>\
-                                </div>\
-                            </li>';
+                                target.each(function(){
+                                    var dataVal = jQuery(this).children('input').val(),
+                                        inputid = jQuery(this).children('input').attr('id'),
+                                        choiceLabel = jQuery(this).children('label')[0].innerHTML,
+                                        onclick = jQuery(this).children('input').attr('onclick') ? jQuery(this).children('input').attr('onclick') : '',
+                                        checked = jQuery(this).children('input').attr('checked') && jQuery(this).children('input').attr('checked') == 'checked' ? 'checked="checked"' : '';
 
-                        jQuery(this).addClass('_proxy_hidden');
-                        jQuery(this).parent().append(html);
+                                    html_choices += '\
+                                    <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
+                                        <div class="item_table">\
+                                            <div class="item_cell">\
+                                                <div class="item"></div>\
+                                            </div>\
+                                            <div class="item_cell">\
+                                                <span class="text">' + choiceLabel + '</span>\
+                                            </div>\
+                                        </div>\
+                                    </div>';
+                                });
+                                
+                                html = '\
+                                    <li id="' + id + '_proxy" class="gfield proxy_item" data-id="' + id + '">\
+                                        <div class="ginput_container">\
+                                            <div class="gfield_item">' + 
+                                                html_choices +
+                                            '</div>\
+                                        </div>\
+                                    </li>';
+
+                                jQuery(t).addClass('_proxy_hidden');
+                                jQuery(t).parent().append(html);
+                            }
+
+                        if(typeof el == 'string') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'boolean') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'object') {
+                            if(typeof el[0] == 'string' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                            if(typeof el[0] == 'boolean' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                        }
 
                     });
 
@@ -165,47 +222,76 @@ window.gravityFormProxies = function(dropdowns, radios, checkboxes) {
             replaceCheckboxes: function(el){
                 if(el){
                     if(typeof el == 'string') {
-                        el = el + ' .ginput_container_checkbox';
+                        element = el + ' .ginput_container_checkbox';
                     }
                     if(typeof el == 'boolean') {
-                        el = 'li.gfield .ginput_container_checkbox';
+                        element = 'li.gfield .ginput_container_checkbox';
                     }
-                    jQuery(el).each(function(){
-                        var html = '',
-                            html_choices = '',
-                            id = jQuery(this).parent().attr('id');
+                    if(typeof el == 'object') {
+                        if(typeof el[0] == 'string' && typeof el[1] == 'number') {
+                            element = el[0] + ' .ginput_container_checkbox';
+                        }
+                        if(typeof el[0] == 'boolean') {
+                            element = 'li.gfield .ginput_container_checkbox';
+                        }
+                    }
 
-                        jQuery(this).children('ul.gfield_checkbox').children('li').each(function(){
-                            var dataVal = jQuery(this).children('input').val(),
-                                inputid = jQuery(this).children('input').attr('id'),
-                                choiceLabel = jQuery(this).children('label')[0].innerHTML,
-                                onclick = jQuery(this).children('input').attr('onclick') ? jQuery(this).children('input').attr('onclick') : '',
-                                checked = jQuery(this).children('input').attr('checked') && jQuery(this).children('input').attr('checked') == 'checked' ? 'checked="checked"' : '';
+                    jQuery(element).each(function(){
+                        var t = this,
+                            id = jQuery(this).parent().attr('id'),
+                            target = jQuery(this).children('ul.gfield_checkbox').children('li'),
+                            processEls = function(t, id, target){
+                                var html = '',
+                                    html_choices = '';
 
-                            html_choices += '\
-                            <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
-                                <div class="item_table">\
-                                    <div class="item_cell">\
-                                        <div class="item"></div>\
-                                    </div>\
-                                    <div class="item_cell">\
-                                        <span class="text">' + choiceLabel + '</span>\
-                                    </div>\
-                                </div>\
-                            </div>';
-                        });
-                        
-                        html = '\
-                            <li id="' + id + '_proxy" class="gfield proxy_checkbox" data-id="' + id + '">\
-                                <div class="ginput_container">\
-                                    <div class="gfield_item">' + 
-                                        html_choices +
-                                    '</div>\
-                                </div>\
-                            </li>';
+                                target.each(function(){
+                                    var dataVal = jQuery(this).children('input').val(),
+                                        inputid = jQuery(this).children('input').attr('id'),
+                                        choiceLabel = jQuery(this).children('label')[0].innerHTML,
+                                        onclick = jQuery(this).children('input').attr('onclick') ? jQuery(this).children('input').attr('onclick') : '',
+                                        checked = jQuery(this).children('input').attr('checked') && jQuery(this).children('input').attr('checked') == 'checked' ? 'checked="checked"' : '';
 
-                        jQuery(this).addClass('_proxy_hidden');
-                        jQuery(this).parent().append(html);
+                                    html_choices += '\
+                                    <div class="item" ' + checked + ' data-val="' + dataVal + '" data-inputid="' + inputid + '" data-onclick="' + onclick + '">\
+                                        <div class="item_table">\
+                                            <div class="item_cell">\
+                                                <div class="item"></div>\
+                                            </div>\
+                                            <div class="item_cell">\
+                                                <span class="text">' + choiceLabel + '</span>\
+                                            </div>\
+                                        </div>\
+                                    </div>';
+                                });
+                                
+                                html = '\
+                                    <li id="' + id + '_proxy" class="gfield proxy_checkbox" data-id="' + id + '">\
+                                        <div class="ginput_container">\
+                                            <div class="gfield_item">' + 
+                                                html_choices +
+                                            '</div>\
+                                        </div>\
+                                    </li>';
+
+                                jQuery(t).addClass('_proxy_hidden');
+                                jQuery(t).parent().append(html);
+
+                            }
+
+                        if(typeof el == 'string') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'boolean') {
+                            processEls(t, id, target);
+                        }
+                        if(typeof el == 'object') {
+                            if(typeof el[0] == 'string' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                            if(typeof el[0] == 'boolean' && typeof el[1] == 'number' && target.length == el[1]) {
+                                processEls(t, id, target);
+                            }
+                        }
 
                     });
 
