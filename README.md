@@ -1,42 +1,37 @@
 # wordpress-gravity-forms-buttons
-This is a jQuery and CSS combination that enables customizing the interface of WordPress Gravity Form radio options and dropdown select fields by creating proxy interfaces that convey the user choices to the original fields and also trigger any related field rules that handle conditional logic.
+This is a Javascript and CSS combination that converts dropdown select fields, radios select fields, and checkboxes into clickable buttons.
+
+It enables customizing the interface of WordPress Gravity Form select fields, radios select fields, and checkboxes by creating proxy interfaces that convey the user choices to the original fields and also trigger any related field rules that handle conditional logic.
 
 Usage:
 
 ```
-window.gravityFormProxies(
-    [string or boolean: either the classname of a target 'Drop Down' type Gravity form field, or a boolean to target all the fields 'Drop Down' type Gravity form fields],
-    [string or boolean: either the classname of a target 'Radio' type Gravity form field, or a boolean to target all 'Radio' type Gravity form fields],
-    [string or boolean: either the classname of a target 'Checkbox' type Gravity form field, or a boolean to target all 'Checkbox' type Gravity form fields]
+gravityFormProxies(
+    [{string or boolean}, or object of [{string or bollean}, {number of options that exist}]: either the classname of a target 'Drop Down' type Gravity form field, or a boolean to target all the fields 'Drop Down' type Gravity form fields, or an object that contains 2 values, 1st either a bollean or string representing a classname or ID, 2nd the number of options that the field should have],
+    [{string or boolean}, or object of [{string or bollean}, {number of options that exist}]: either the classname of a target 'Radio' type Gravity form field, or a boolean to target all 'Radio' type Gravity form fields, or an object that contains 2 values, 1st either a bollean or string representing a classname or ID, 2nd the number of options that the field should have],
+    [{string or boolean}, or object of [{string or bollean}, {number of options that exist}]: either the classname of a target 'Checkbox' type Gravity form field, or a boolean to target all 'Checkbox' type Gravity form fields, or an object that contains 2 values, 1st either a bollean or string representing a classname or ID, 2nd the number of options that the field should have]
 );
 ```
 
-
-
-If you want to turn all dropdowns in to horizontal buttons, enter true, such as:
+## Examples:
 
 `window.gravityFormProxies(true);`
-
-
-
-Or target a single dropdown by adding a 'Custom CSS Class' to a 'Drop Down' type Gravity form field to turn it into horizontal buttons:
-
-`window.gravityFormProxies('.gfield.dropdown_buttons');`
-
-
-
-You may also choose to only turn all radio buttons to custom horizontal buttons by adding a second value as true:
+Turn all dropdowns in to horizontal buttons.
 
 `window.gravityFormProxies(false, true, false);`
-
-
-
-Or target a single radio group by adding a 'Custom CSS Class' to a 'Radio' type Gravity form field to turn it into horizontal buttons:
+Turns all radio buttons to horizontal buttons.
 
 `window.gravityFormProxies(false, '.myVerticalRadios', false);`
-
-
-
-Or turn all dropdowns and radio buttons into cutom horizontal buttons by passing all values as true:
+Turns a single radio group to horizontal buttons.
 
 `window.gravityFormProxies(true, true, true);`
+Turns all dropdowns and radio buttons into horizontal buttons.
+
+`gravityFormProxies(false, [true, 2], false);`
+Turns all radio options that have 2 options into horizontal buttons.
+
+`gravityFormProxies(false, ['.myCustomRadios', 2], false);`
+Turns all radio options that have 2 options and match classname `.myCustomRadios` into horizontal buttons.
+
+`gravityFormProxies(false, true, '.myCheckBoxes');`
+Turns all radio options into horizontal buttons, and turns all checkboxes that match classname `.myCheckBoxes` into horizontal buttons.
