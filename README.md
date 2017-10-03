@@ -15,7 +15,7 @@ gravityFormProxies(
 
 ## Examples:
 
-`window.gravityFormProxies(true);`
+`window.gravityFormProxies(true, true, true);`
 
 Turn all dropdowns in to horizontal buttons.
 
