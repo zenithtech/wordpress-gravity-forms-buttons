@@ -1,4 +1,6 @@
 # wordpress-gravity-forms-buttons
+Turn all radios, check boxes, dropdown menus into buttons. No more having to click multiple times. 
+
 This is a Javascript and CSS combination that converts dropdown select fields, radios select fields, and checkboxes into clickable buttons.
 
 It enables customizing the interface of WordPress Gravity Form select fields, radios select fields, and checkboxes by creating proxy interfaces that convey the user choices to the original fields and also trigger any related field rules that handle conditional logic.
