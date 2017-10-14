@@ -4,6 +4,10 @@ ul.gform_fields>li.gfield .ginput_container._proxy_hidden {
     display: none !important;
 }
 
+ul.gform_fields li[id$="_proxy"].gfield {
+    padding: 0;
+}
+
 ul.gform_fields li[id$="_proxy"].gfield .ginput_container {
     border-radius: 5px;
     background-color: #fff;
