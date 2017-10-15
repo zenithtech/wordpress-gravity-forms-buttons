@@ -33,7 +33,7 @@ Turn only dropdowns in to horizontal buttons.
 Turns all radio buttons to horizontal buttons.
 
 
-`window.gravityFormProxies(false, '.myVerticalRadios', false);`
+`window.gravityFormProxies(false, '.myRadios', false);`
 
 Turns a single radio group to horizontal buttons.
 
